@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #FFD700, #87CEEB); /* 清晨渐变 */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 1s ease;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.2); /* 毛玻璃 */
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.clock {
+  margin: 20px auto;
+}
+
+.clock-face {
+  display: block;
+  margin: 0 auto;
+}
+
+#hour-hand, #minute-hand {
+  transform-origin: 50% 50%;
+  transition: transform 0.5s ease;
+}
+
+#time-text {
+  font-size: 18px;
+  color: #333;
+}
+
+.lang-switch {
+  margin: 10px 0;
+}
+
+.lang-switch button {
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.lang-switch button:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.greeting {
+  font-size: 24px;
+  color: #333;
+  margin: 20px 0;
+}
+
+.garden {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.flower {
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  animation: sway 3s infinite ease-in-out;
+}
+
+.pet {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  margin: 20px auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.pet:hover {
+  transform: scale(1.1);
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 10px;
+  max-width: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 150px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation: bubble-pop 0.5s ease-in-out;
+}
+
+.nav button {
+  background: #4A90E2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+}
+
+.nav button:hover {
+  background: #357ABD;
+  transform: scale(1.05);
+}
+
+@keyframes sway {
+  0% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+@keyframes bubble-pop {
+  0% { transform: translateX(-50%) scale(0.8); opacity: 0; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+@media (prefers-color-scheme: dark) {
+  body { background: linear-gradient(180deg, #2C3E50, #000); }
+  .container { background: rgba(0, 0, 0, 0.3); color: #fff; }
+  .greeting, #time-text { color: #fff; }
+  .lang-switch button { background: rgba(255, 255, 255, 0.3); }
+  .lang-switch button:hover { background: rgba(255, 255, 255, 0.5); }
+}
+
+@media (min-width: 768px) {
+  .container { max-width: 800px; } /* iPad分栏适配 */
+  .garden { justify-content: space-between; }
+}
