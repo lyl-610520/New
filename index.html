@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4A90E2">
+  <title>时光花园 - 打卡应用</title>
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    body {
+      background: linear-gradient(180deg, #FFD700, #87CEEB); /* 昼夜渐变 */
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 1s ease;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.2); /* 毛玻璃效果 */
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+    .greeting {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .garden {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    .flower {
+      width: 80px;
+      height: 80px;
+      background: url('flower.svg') no-repeat center; /* 手绘图标 */
+      background-size: cover;
+      animation: sway 3s infinite ease-in-out;
+    }
+    .pet {
+      width: 100px;
+      height: 100px;
+      background: url('pet-cat.svg') no-repeat center; /* 手绘宠物 */
+      background-size: cover;
+      cursor: pointer;
+    }
+    @keyframes sway {
+      0% { transform: rotate(5deg); }
+      50% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: linear-gradient(180deg, #2C3E50, #000); }
+      .container { background: rgba(0, 0, 0, 0.3); color: #fff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="greeting">清晨好，准备开启新一天！</div>
+    <div class="garden">
+      <div class="flower"></div>
+      <div class="flower"></div>
+      <div class="flower"></div>
+    </div>
+    <div class="pet"></div>
+    <button onclick="startCheckIn()">开始打卡</button>
+  </div>
+  <script>
+    // 动态背景根据时间
+    const updateBackground = () => {
+      const hour = new Date().getHours();
+      document.body.style.background = hour < 12 ? 
+        'linear-gradient(180deg, #FFD700, #87CEEB)' : 
+        'linear-gradient(180deg, #2C3E50, #000)';
+    };
+    updateBackground();
+    setInterval(updateBackground, 60000);
+    // 打卡逻辑（占位）
+    function startCheckIn() { alert('开始打卡！'); }
+  </script>
+</body>
+</html>
